@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\work\workspace\ZZS HMP\45\deploy</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>09/01/2015 12:39:02</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>09/01/2015 12:39:02</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>09/01/2015 12:04:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>09/01/2015 12:04:26</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>09/01/2015 12:00:19</publishTime>
+    </File>
+    <File Include="bin/NLog.dll">
+      <publishTime>09/01/2015 10:40:34</publishTime>
+    </File>
+    <File Include="bin/Oracle.ManagedDataAccess.dll">
+      <publishTime>09/01/2015 10:51:17</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>09/01/2015 12:00:19</publishTime>
+    </File>
+    <File Include="bin/System.Web.Cors.dll">
+      <publishTime>09/01/2015 12:03:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.Cors.dll">
+      <publishTime>09/01/2015 12:06:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>09/01/2015 12:00:19</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>09/01/2015 12:00:20</publishTime>
+    </File>
+    <File Include="bin/TRexServer.dll">
+      <publishTime>09/01/2015 12:38:22</publishTime>
+    </File>
+    <File Include="bin/TRexServer.pdb">
+      <publishTime>09/01/2015 12:38:22</publishTime>
+    </File>
+    <File Include="bin/WebApiContrib.Formatting.Html.dll">
+      <publishTime>09/01/2015 12:05:19</publishTime>
+    </File>
+    <File Include="NLog.config">
+      <publishTime>09/01/2015 10:34:49</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>09/01/2015 12:06:30</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>09/01/2015 12:38:58</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/01/2015 12:38:58</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

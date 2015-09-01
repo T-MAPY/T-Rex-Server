@@ -1,1 +1,1 @@
-# T-Rex-Server
+# T-Rex Server
