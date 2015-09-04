@@ -6,53 +6,53 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\work\workspace\ZZS HMP\45\deploy</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\work\workspace\T-Rex-Server\Deploy</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>09/01/2015 12:39:02</publishTime>
+      <publishTime>09/04/2015 15:36:29</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>09/01/2015 12:39:02</publishTime>
+      <publishTime>09/04/2015 15:36:29</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>09/01/2015 12:04:26</publishTime>
+      <publishTime>09/04/2015 15:22:44</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
-      <publishTime>09/01/2015 12:04:26</publishTime>
+      <publishTime>09/04/2015 15:22:44</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>09/01/2015 12:00:19</publishTime>
+      <publishTime>09/04/2015 15:22:46</publishTime>
     </File>
     <File Include="bin/NLog.dll">
-      <publishTime>09/01/2015 10:40:34</publishTime>
+      <publishTime>09/04/2015 15:22:47</publishTime>
     </File>
     <File Include="bin/Oracle.ManagedDataAccess.dll">
-      <publishTime>09/01/2015 10:51:17</publishTime>
+      <publishTime>09/04/2015 15:22:47</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
-      <publishTime>09/01/2015 12:00:19</publishTime>
+      <publishTime>09/04/2015 15:22:45</publishTime>
     </File>
     <File Include="bin/System.Web.Cors.dll">
-      <publishTime>09/01/2015 12:03:06</publishTime>
+      <publishTime>09/04/2015 15:22:45</publishTime>
     </File>
     <File Include="bin/System.Web.Http.Cors.dll">
-      <publishTime>09/01/2015 12:06:30</publishTime>
+      <publishTime>09/04/2015 15:22:45</publishTime>
     </File>
     <File Include="bin/System.Web.Http.dll">
-      <publishTime>09/01/2015 12:00:19</publishTime>
+      <publishTime>09/04/2015 15:22:45</publishTime>
     </File>
     <File Include="bin/System.Web.Http.WebHost.dll">
-      <publishTime>09/01/2015 12:00:20</publishTime>
+      <publishTime>09/04/2015 15:22:45</publishTime>
     </File>
     <File Include="bin/TRexServer.dll">
-      <publishTime>09/01/2015 12:38:22</publishTime>
+      <publishTime>09/04/2015 15:35:49</publishTime>
     </File>
     <File Include="bin/TRexServer.pdb">
-      <publishTime>09/01/2015 12:38:22</publishTime>
+      <publishTime>09/04/2015 15:35:49</publishTime>
     </File>
     <File Include="bin/WebApiContrib.Formatting.Html.dll">
-      <publishTime>09/01/2015 12:05:19</publishTime>
+      <publishTime>09/04/2015 15:22:47</publishTime>
     </File>
     <File Include="NLog.config">
       <publishTime>09/01/2015 10:34:49</publishTime>
@@ -61,10 +61,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/01/2015 12:06:30</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/01/2015 12:38:58</publishTime>
+      <publishTime>09/04/2015 15:36:27</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/01/2015 12:38:58</publishTime>
+      <publishTime>09/04/2015 15:36:00</publishTime>
     </File>
   </ItemGroup>
 </Project>

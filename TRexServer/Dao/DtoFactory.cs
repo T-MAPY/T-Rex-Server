@@ -76,7 +76,7 @@ namespace TRexServer.Dao
                         Connection = con,
                         CommandText =
                             string.Format(
-                                "INSERT INTO {0} (MU_NAME, LONGITUDE, LATITUDE, AZIMUTH, POSITION_UPDATE) VALUES (:i, :o, :a, :b, TO_DATE(:t, 'YYYY-MM-DD HH24:MI:SS'))",
+                                "INSERT INTO {0} (MU_NAME, LONGITUDE, LATITUDE, AZIMUTH, ACTION_STATE, POSITION_UPDATE, STATE_UPDATE) VALUES (:i, :a, :o, :b, :st, TO_DATE(:t, 'YYYY-MM-DD HH24:MI:SS'), TO_DATE(:tt, 'YYYY-MM-DD HH24:MI:SS'))",
                                 Settings.Default.TableName)
                     };
 
@@ -87,13 +87,13 @@ namespace TRexServer.Dao
                     });
                     cmd.Parameters.Add(new OracleParameter
                     {
-                        Value = data.a,
-                        ParameterName = "a"
+                        Value = data.o,
+                        ParameterName = "o"
                     });
                     cmd.Parameters.Add(new OracleParameter
                     {
-                        Value = data.o,
-                        ParameterName = "o"
+                        Value = data.a,
+                        ParameterName = "a"
                     });
 
                     // is not in table in database
@@ -114,8 +114,18 @@ namespace TRexServer.Dao
                     });
                     cmd.Parameters.Add(new OracleParameter
                     {
+                        Value = "SHUTDOWN",
+                        ParameterName = "st"
+                    });
+                    cmd.Parameters.Add(new OracleParameter
+                    {
                         Value = data.t.ToString("yyyy-MM-dd HH:mm:ss"),
                         ParameterName = "t"
+                    });
+                    cmd.Parameters.Add(new OracleParameter
+                    {
+                        Value = data.t.ToString("yyyy-MM-dd HH:mm:ss"),
+                        ParameterName = "tt"
                     });
 
                     cmd.ExecuteNonQuery();
@@ -140,7 +150,7 @@ namespace TRexServer.Dao
                         {
                             Connection = con,
                             CommandText = string.Format(
-                                "UPDATE {0} SET LONGITUDE = :o, LATITUDE = :a , AZIMUTH = :b, POSITION_UPDATE =  TO_DATE(:t, 'YYYY-MM-DD HH24:MI:SS') WHERE MU_NAME = '{1}'",
+                                "UPDATE {0} SET LONGITUDE = :a, LATITUDE = :o , AZIMUTH = :b, ACTION_STATE = :st, POSITION_UPDATE = TO_DATE(:t, 'YYYY-MM-DD HH24:MI:SS'), STATE_UPDATE = TO_DATE(:t, 'YYYY-MM-DD HH24:MI:SS') WHERE MU_NAME = '{1}'",
                                 Settings.Default.TableName, data.i)
                         };
 
@@ -152,13 +162,13 @@ namespace TRexServer.Dao
                         //});
                         cmd.Parameters.Add(new OracleParameter
                         {
-                            Value = data.a,
-                            ParameterName = "a"
+                            Value = data.o,
+                            ParameterName = "o"
                         });
                         cmd.Parameters.Add(new OracleParameter
                         {
-                            Value = data.o,
-                            ParameterName = "o"
+                            Value = data.a,
+                            ParameterName = "a"
                         });
 
                         // is not in table in database
@@ -179,8 +189,18 @@ namespace TRexServer.Dao
                         });
                         cmd.Parameters.Add(new OracleParameter
                         {
+                            Value = "SHUTDOWN",
+                            ParameterName = "st"
+                        });
+                        cmd.Parameters.Add(new OracleParameter
+                        {
                             Value = data.t.ToString("yyyy-MM-dd HH:mm:ss"),
                             ParameterName = "t"
+                        });
+                        cmd.Parameters.Add(new OracleParameter
+                        {
+                            Value = data.t.ToString("yyyy-MM-dd HH:mm:ss"),
+                            ParameterName = "tt"
                         });
 
                         cmd.ExecuteNonQuery();
