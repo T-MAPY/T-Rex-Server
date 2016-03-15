@@ -26,7 +26,7 @@ namespace TRexServer.Security
             //pokud nepřišel bezepčnostní řetězec v datech, tak vrať false
             if (string.IsNullOrWhiteSpace(data.c)) return false;
 
-            return data.c.Equals(GetMd5Hash(data.i + data.t?.ToString("yyyy-MM-dd HH:mm:ss") + Settings.Default.SecurityString));
+            return data.c.Equals(GetMd5Hash(data.i + data.t?.ToString("yyyy-MM-dd'T'HH:mm:ss") + Settings.Default.SecurityString));
         }
 
         /// <summary>

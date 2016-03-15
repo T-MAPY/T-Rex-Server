@@ -28,7 +28,7 @@ namespace TRexServerTests
 
             var date = DateTime.Now;
             dataDto.t = date;
-            dataDto.c = SecurityHelper.GetMd5Hash("deviceA" + date.ToString("yyyy-MM-dd HH:mm:ss") + "Trex1Security2String3");
+            dataDto.c = SecurityHelper.GetMd5Hash("deviceA" + date.ToString("yyyy-MM-dd'T'HH:mm:ss") + "Trex1Security2String3");
             //Assert.IsTrue(SecurityHelper.CheckStatusDto(dataDto));
         }
     }
