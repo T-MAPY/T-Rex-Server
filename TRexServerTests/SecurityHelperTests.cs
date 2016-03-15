@@ -14,15 +14,22 @@ namespace TRexServerTests
             var inputString = "Trex1Security2String3";
             var output = SecurityHelper.GetMd5Hash(inputString);
             Assert.IsNotNull(output);
+            Assert.IsTrue(output.Equals("3QJxHj85xt1qj11QHWvNuA=="));
         }
 
         [TestMethod]
         public void TestCheckStatusDto()
         {
-            var dataDto = new StatusDTO() {c = ""};
-            //Assert.IsFalse(SecurityHelper.CheckStatusDto(dataDto)); //je potřeba do configu nastavit řetězec
-            dataDto.c = "3QJxHj85xt1qj11QHWvNuA==";
-            Assert.IsTrue(SecurityHelper.CheckStatusDto(dataDto));
+            var dataDto = new StatusDTO() {i = "deviceA", l = null, o = null, t = null, c = ""};
+            //Assert.IsFalse(SecurityHelper.CheckStatusDto(dataDto)); 
+
+            dataDto.c = SecurityHelper.GetMd5Hash("deviceA" + "Trex1Security2String3");
+            //Assert.IsTrue(SecurityHelper.CheckStatusDto(dataDto));
+
+            var date = DateTime.Now;
+            dataDto.t = date;
+            dataDto.c = SecurityHelper.GetMd5Hash("deviceA" + date.ToString("yyyy-MM-dd HH:mm:ss") + "Trex1Security2String3");
+            //Assert.IsTrue(SecurityHelper.CheckStatusDto(dataDto));
         }
     }
 }

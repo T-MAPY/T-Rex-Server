@@ -119,12 +119,12 @@ namespace TRexServer.Dao
                     });
                     cmd.Parameters.Add(new OracleParameter
                     {
-                        Value = data.t.ToString("yyyy-MM-dd HH:mm:ss"),
+                        Value = data.t?.ToString("yyyy-MM-dd HH:mm:ss"),
                         ParameterName = "t"
                     });
                     cmd.Parameters.Add(new OracleParameter
                     {
-                        Value = data.t.ToString("yyyy-MM-dd HH:mm:ss"),
+                        Value = data.t?.ToString("yyyy-MM-dd HH:mm:ss"),
                         ParameterName = "tt"
                     });
 
@@ -194,12 +194,12 @@ namespace TRexServer.Dao
                         });
                         cmd.Parameters.Add(new OracleParameter
                         {
-                            Value = data.t.ToString("yyyy-MM-dd HH:mm:ss"),
+                            Value = data.t?.ToString("yyyy-MM-dd HH:mm:ss"),
                             ParameterName = "t"
                         });
                         cmd.Parameters.Add(new OracleParameter
                         {
-                            Value = data.t.ToString("yyyy-MM-dd HH:mm:ss"),
+                            Value = data.t?.ToString("yyyy-MM-dd HH:mm:ss"),
                             ParameterName = "tt"
                         });
 
