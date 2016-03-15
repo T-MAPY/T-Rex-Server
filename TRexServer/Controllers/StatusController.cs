@@ -3,6 +3,7 @@ using System.Web.Http.Cors;
 using NLog;
 using TRexServer.Dao;
 using TRexServer.Models;
+using TRexServer.Security;
 
 namespace TRexServer.Controllers
 {
@@ -14,15 +15,21 @@ namespace TRexServer.Controllers
         // GET api/status
         public void Get(StatusDTO value)
         {
-            var dtoFactory = new DtoFactory();
-            dtoFactory.InsertOrUpdateDatabase(value);
+            if (SecurityHelper.CheckStatusDto(value))
+            {                
+                var dtoFactory = new DtoFactory();
+                dtoFactory.InsertOrUpdateDatabase(value);
+            }
         }
 
         // POST api/status
         public void Post([FromBody] StatusDTO value)
         {
-            var dtoFactory = new DtoFactory();
-            dtoFactory.InsertOrUpdateDatabase(value);
+            if (SecurityHelper.CheckStatusDto(value))
+            {
+                var dtoFactory = new DtoFactory();
+                dtoFactory.InsertOrUpdateDatabase(value);
+            }
         }
     }
 }

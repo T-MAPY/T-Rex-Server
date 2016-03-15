@@ -8,5 +8,8 @@
     <Setting Name="TableName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">CPC_MU</Value>
     </Setting>
+    <Setting Name="SecurityString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
