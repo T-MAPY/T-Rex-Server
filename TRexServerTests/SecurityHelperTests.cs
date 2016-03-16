@@ -20,16 +20,16 @@ namespace TRexServerTests
         [TestMethod]
         public void TestCheckStatusDto()
         {
-            var dataDto = new StatusDTO() {i = "deviceA", l = null, o = null, t = null, c = ""};
-            //Assert.IsFalse(SecurityHelper.CheckStatusDto(dataDto)); 
+            var dataDto = new StatusDTO() {i = "deviceA", l = null, o = null, t = null, k = ""};
+            //Assert.IsFalse(SecurityHelper.CheckAccessKey(dataDto)); 
 
-            dataDto.c = SecurityHelper.GetMd5Hash("deviceA" + "Trex1Security2String3");
-            //Assert.IsTrue(SecurityHelper.CheckStatusDto(dataDto));
+            dataDto.k = SecurityHelper.GetMd5Hash("deviceA" + "Trex1Security2String3");
+            //Assert.IsTrue(SecurityHelper.CheckAccessKey(dataDto));
 
             var date = DateTime.Now;
             dataDto.t = date;
-            dataDto.c = SecurityHelper.GetMd5Hash("deviceA" + date.ToString("yyyy-MM-dd'T'HH:mm:ss") + "Trex1Security2String3");
-            //Assert.IsTrue(SecurityHelper.CheckStatusDto(dataDto));
+            dataDto.k = SecurityHelper.GetMd5Hash("deviceA" + date.ToString("yyyy-MM-dd'T'HH:mm:ss") + "Trex1Security2String3");
+            //Assert.IsTrue(SecurityHelper.CheckAccessKey(dataDto));
         }
     }
 }

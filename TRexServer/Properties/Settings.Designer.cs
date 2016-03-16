@@ -44,9 +44,9 @@ namespace TRexServer.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string SecurityString {
+        public string AccessKey {
             get {
-                return ((string)(this["SecurityString"]));
+                return ((string)(this["AccessKey"]));
             }
         }
     }

@@ -15,7 +15,7 @@ namespace TRexServer.Controllers
         // GET api/status
         public void Get(StatusDTO value)
         {
-            if (SecurityHelper.CheckStatusDto(value))
+            if (SecurityHelper.CheckAccessKey(value))
             {                
                 var dtoFactory = new DtoFactory();
                 dtoFactory.InsertOrUpdateDatabase(value);
@@ -25,7 +25,7 @@ namespace TRexServer.Controllers
         // POST api/status
         public void Post([FromBody] StatusDTO value)
         {
-            if (SecurityHelper.CheckStatusDto(value))
+            if (SecurityHelper.CheckAccessKey(value))
             {
                 var dtoFactory = new DtoFactory();
                 dtoFactory.InsertOrUpdateDatabase(value);

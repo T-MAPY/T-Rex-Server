@@ -10,7 +10,7 @@ namespace TRexServer.Models
         public double? l { get; set; }
         public float? s { get; set; }
         public float? b { get; set; }
-        public string c { get; set; }
+        public string k { get; set; }
         public DateTime? t { get; set; }
     }
 }

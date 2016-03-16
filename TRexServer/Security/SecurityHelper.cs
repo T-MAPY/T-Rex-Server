@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Data.Common;
-using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using TRexServer.Models;
@@ -14,19 +12,19 @@ namespace TRexServer.Security
     public class SecurityHelper
     {
         /// <summary>
-        /// Ověří, zda v DTO objektu uložený bezepčnostní řetězec odpovídá MD5 bezpečnostního řetězce na serveru
+        /// Ověří, zda v DTO objektu uložený bezepčnostní řetězec (klíč) odpovídá klíči, který je uložen v nastavení serveru
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static bool CheckStatusDto(StatusDTO data)
+        public static bool CheckAccessKey(StatusDTO data)
         {
             //pokud na serveru není nastavena hodnota bezpečnostního řetězce, tak vrať true
-            if (string.IsNullOrWhiteSpace(Settings.Default.SecurityString)) return true;
+            if (string.IsNullOrWhiteSpace(Settings.Default.AccessKey)) return true;
 
             //pokud nepřišel bezepčnostní řetězec v datech, tak vrať false
-            if (string.IsNullOrWhiteSpace(data.c)) return false;
+            if (string.IsNullOrWhiteSpace(data.k)) return false;
 
-            return data.c.Equals(GetMd5Hash(data.i + data.t?.ToString("yyyy-MM-dd'T'HH:mm:ss") + Settings.Default.SecurityString));
+            return data.k.Equals(GetMd5Hash(data.i + data.t?.ToString("yyyy-MM-dd'T'HH:mm:ss") + Settings.Default.AccessKey));
         }
 
         /// <summary>
