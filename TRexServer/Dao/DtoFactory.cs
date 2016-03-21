@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 using NLog;
 using Oracle.ManagedDataAccess.Client;
 using TRexServer.Models;
@@ -14,27 +16,44 @@ namespace TRexServer.Dao
         {
             if (data != null)
             {
-                var b = ExistDataInDatabase(data.i);
-                switch (b)
+                var connections = new List<Connection>();
+                try
                 {
-                    case true:
-                        UpdateDatabase(data);
-                        break;
-                    case false:
-                        InsertToDatabase(data);
-                        break;
-                    case null:
-                        Logger.Error("not connection to database");
-                        break;
+                    connections = JsonConvert.DeserializeObject<List<Connection>>(Settings.Default.Connections);
+                }
+                catch (Exception e)
+                {
+                    Logger.Error("Deserialize configuration failed.");
+                    Logger.Error(e);
+                }
+
+                var conString = GetConnectionString(data.i, connections);
+                var tableName = GetTableName(data.i,connections);
+
+                if (string.IsNullOrWhiteSpace(conString) && string.IsNullOrWhiteSpace(tableName))
+                {
+                    var b = ExistDataInDatabase(data.i, conString, tableName);
+                    switch (b)
+                    {
+                        case true:
+                            UpdateDatabase(data, conString, tableName);
+                            break;
+                        case false:
+                            InsertToDatabase(data, conString, tableName);
+                            break;
+                        case null:
+                            Logger.Error("not connection to database");
+                            break;
+                    }
                 }
             }
         }
 
-        private bool? ExistDataInDatabase(string i)
+        private bool? ExistDataInDatabase(string i, string conString, string tableName)
         {
             try
             {
-                using (var con = new OracleConnection(Settings.Default.ConnectionString))
+                using (var con = new OracleConnection(conString))
                 {
                     con.Open();
 
@@ -42,7 +61,7 @@ namespace TRexServer.Dao
                     {
                         Connection = con,
                         CommandText =
-                            string.Format("SELECT MU_NAME FROM {0} WHERE MU_NAME = :i", Settings.Default.TableName)
+                            string.Format("SELECT MU_NAME FROM {0} WHERE MU_NAME = :i", tableName)
                     };
 
                     cmd.Parameters.Add(new OracleParameter
@@ -63,11 +82,11 @@ namespace TRexServer.Dao
             }
         }
 
-        private void InsertToDatabase(StatusDTO data)
+        private void InsertToDatabase(StatusDTO data, string conString, string tableName)
         {
             try
             {
-                using (var con = new OracleConnection(Settings.Default.ConnectionString))
+                using (var con = new OracleConnection(conString))
                 {
                     con.Open();
 
@@ -77,7 +96,7 @@ namespace TRexServer.Dao
                         CommandText =
                             string.Format(
                                 "INSERT INTO {0} (MU_NAME, LONGITUDE, LATITUDE, AZIMUTH, ACTION_STATE, POSITION_UPDATE, STATE_UPDATE) VALUES (:i, :a, :o, :b, :st, TO_DATE(:t, 'YYYY-MM-DD HH24:MI:SS'), TO_DATE(:tt, 'YYYY-MM-DD HH24:MI:SS'))",
-                                Settings.Default.TableName)
+                                tableName)
                     };
 
                     cmd.Parameters.Add(new OracleParameter
@@ -137,12 +156,12 @@ namespace TRexServer.Dao
             }
         }
 
-        public void UpdateDatabase(StatusDTO data)
+        public void UpdateDatabase(StatusDTO data, string conString, string tableName)
         {
             {
                 try
                 {
-                    using (var con = new OracleConnection(Settings.Default.ConnectionString))
+                    using (var con = new OracleConnection(conString))
                     {
                         con.Open();
 
@@ -151,7 +170,7 @@ namespace TRexServer.Dao
                             Connection = con,
                             CommandText = string.Format(
                                 "UPDATE {0} SET LONGITUDE = :a, LATITUDE = :o , AZIMUTH = :b, ACTION_STATE = :st, POSITION_UPDATE = TO_DATE(:t, 'YYYY-MM-DD HH24:MI:SS'), STATE_UPDATE = TO_DATE(:t, 'YYYY-MM-DD HH24:MI:SS') WHERE MU_NAME = '{1}'",
-                                Settings.Default.TableName, data.i)
+                                tableName, data.i)
                         };
 
                         // does not work
@@ -211,6 +230,32 @@ namespace TRexServer.Dao
                     Logger.Error(e);
                 }
             }
+        }
+
+        private string GetConnectionString(string id, List<Connection> connections)
+        {
+            foreach (var connection in connections)
+            {
+                if (connection.Ids.Contains(id))
+                {
+                    return connection.ConnectionString;
+                }
+            }
+
+            return Settings.Default.DefaultConnectionString;
+        }
+
+        private string GetTableName(string id, List<Connection> connections)
+        {
+            foreach (var connection in connections)
+            {
+                if (connection.Ids.Contains(id))
+                {
+                    return connection.TableName;
+                }
+            }
+
+            return Settings.Default.DefaultTableName;
         }
     }
 }

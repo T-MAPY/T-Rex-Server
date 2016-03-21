@@ -12,7 +12,6 @@ namespace TRexServer.Controllers
         // GET api/test
         public string Get()
         {
-            
             Logger.Debug("test");
             return "T-Mapy test";
         }

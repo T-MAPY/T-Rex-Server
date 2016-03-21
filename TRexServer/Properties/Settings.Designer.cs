@@ -25,28 +25,60 @@ namespace TRexServer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"DATA SOURCE=""(DESCRIPTION =(ADDRESS_LIST =(ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.88.52)(PORT = 1521))(ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.88.52)(PORT = 1521)))(CONNECT_DATA =(SERVICE_NAME = ZOSTST)))"";USER ID=IF_GIS;DBA PRIVILEGE=;PASSWORD=f4STusW6")]
-        public string ConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AccessKey {
             get {
-                return ((string)(this["ConnectionString"]));
+                return ((string)(this["AccessKey"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"[
+  {
+    ""ConnectionString"": ""DATA SOURCE=\""(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=david.ostrava.tmapy.cz)(PORT=1521))(CONNECT_DATA=(SID=david)))\"";USER ID=zzspraha;DBA PRIVILEGE=;PASSWORD=heslo"",
+    ""TableName"": ""CPC_MU"",
+    ""Ids"": [
+      ""id1"",
+      ""id2"",
+      ""id3"",
+      ""id4""
+    ]
+  },
+  {
+    ""ConnectionString"": ""DATA SOURCE=\""(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=david.ostrava.tmapy.cz)(PORT=1521))(CONNECT_DATA=(SID=david)))\"";USER ID=zzspraha;DBA PRIVILEGE=;PASSWORD=heslo"",
+    ""TableName"": ""CPC_MU"",
+    ""Ids"": [
+      ""id1"",
+      ""id2"",
+      ""id3"",
+      ""id4""
+    ]
+  }
+]")]
+        public string Connections {
+            get {
+                return ((string)(this["Connections"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DATA SOURCE=\\\"(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=david.ostrava.tmapy.cz)(P" +
+            "ORT=1521))(CONNECT_DATA=(SID=david)))\\\";USER ID=zzspraha;DBA PRIVILEGE=;PASSWORD" +
+            "=heslo")]
+        public string DefaultConnectionString {
+            get {
+                return ((string)(this["DefaultConnectionString"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("CPC_MU")]
-        public string TableName {
+        public string DefaultTableName {
             get {
-                return ((string)(this["TableName"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string AccessKey {
-            get {
-                return ((string)(this["AccessKey"]));
+                return ((string)(this["DefaultTableName"]));
             }
         }
     }
